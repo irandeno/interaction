@@ -1,6 +1,6 @@
 import { InteractOptions, InteractType } from "./src/core/interact.ts";
-export { InteractOptions };
-import { Any, Numeric } from "./src/types/mod.ts";
+export { InteractType };
+import { Any, Numeric, Choice } from "./src/types/mod.ts";
 
 export class Interaction {
   answers: Record<string, string | number> = {};
@@ -12,6 +12,9 @@ export class Interaction {
           break;
         case InteractType.numeric:
           this.answers[opt.name] = await new Numeric(opt).request();
+          break;
+        case InteractType.choice:
+          this.answers[opt.name] = await new Choice(opt).request();
           break;
       }
     }

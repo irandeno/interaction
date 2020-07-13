@@ -3,9 +3,9 @@ import * as logger from "../helpers/logger.ts";
 export enum InteractType {
   any,
   numeric,
+  choice,
   /* TODO: 
   alphabetical,
-  choice,
   checklist,
   */
 }

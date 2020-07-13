@@ -1,6 +1,6 @@
 import { Interact, InteractOptions } from "../core/interact.ts";
-import * as logger from "../core/logger.ts";
-import { readKeypress } from "https://deno.land/x/keypress@0.0.4/mod.ts";
+import * as logger from "../helpers/logger.ts";
+import { readKeypress } from "../deps.ts";
 
 export class Numeric extends Interact {
   constructor(opts: InteractOptions) {
