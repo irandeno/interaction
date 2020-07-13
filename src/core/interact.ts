@@ -32,7 +32,7 @@ export class Interact implements InteractOptions {
   protected async printMessage() {
     let output = `${this.prefix}${this.message}${this.suffix}`;
     if (this.bold) {
-     output = logger.bold(output);
+      output = logger.bold(output);
     }
     await logger.write(output);
   }
