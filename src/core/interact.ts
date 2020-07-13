@@ -1,4 +1,4 @@
-import * as logger from "./logger.ts";
+import * as logger from "../helpers/logger.ts";
 
 export enum InteractType {
   any,
