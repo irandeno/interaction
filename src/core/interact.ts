@@ -2,8 +2,8 @@ import * as logger from "./logger.ts";
 
 export enum InteractType {
   any,
-  /* todo : 
-  number,
+  numeric,
+  /* TODO: 
   alphabetical,
   choice,
   checklist,
