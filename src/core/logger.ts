@@ -13,3 +13,9 @@ export function decode(input?: Uint8Array): string {
 export async function write(input: string): Promise<void> {
   await Deno.stdout.write(encode(input));
 }
+
+export const bold = (input: string): string => styling(1, input);
+
+function styling(colorCode: number, input: string) {
+  return `\x1b[${colorCode}m${input}\x1b[0m`;
+}
