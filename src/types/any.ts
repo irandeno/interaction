@@ -1,7 +1,6 @@
 import { Interact, InteractOptions } from "../core/interact.ts";
-import * as logger from "../core/logger.ts";
-import { BufReader } from "https://deno.land/std@0.60.0/io/bufio.ts";
-
+import * as logger from "../helpers/logger.ts";
+import { BufReader } from "../deps.ts";
 export class Any extends Interact {
   constructor(opts: InteractOptions) {
     super(opts);
