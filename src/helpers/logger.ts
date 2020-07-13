@@ -16,6 +16,10 @@ export async function write(input: string): Promise<void> {
 
 export const bold = (input: string): string => styling(1, input);
 
+export const green = (input: string): string => styling(32, input);
+
+export const darkGray = (input: string): string => styling(90, input);
+
 function styling(colorCode: number, input: string) {
   return `\x1b[${colorCode}m${input}\x1b[0m`;
 }
