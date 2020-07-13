@@ -21,13 +21,23 @@ export interface InteractOptions {
 }
 
 export class Interact implements InteractOptions {
-  name: string;
+  name: string = "";
   type: InteractType = InteractType.any;
   message?: string;
   prefix?: string;
   suffix?: string;
   bold?: boolean;
   options?: Array<string>;
+  [key: string]: unknown
+  constructor(opts: InteractOptions) {
+    if (typeof opts.name == undefined) {
+      // TODO: properly error handling!
+      throw new Error("name is required");
+    }
+    for (const [key, value] of Object.entries(opts)) {
+      this[key] = value;
+    }
+  }
 
   protected async printMessage() {
     let output = `${this.prefix}${this.message}${this.suffix}`;
