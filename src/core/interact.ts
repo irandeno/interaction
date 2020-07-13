@@ -1,3 +1,5 @@
+import * as logger from "./logger.ts";
+
 export enum InteractType {
   any,
   /* todo : 
@@ -26,4 +28,12 @@ export class Interact implements InteractOptions {
   suffix?: string;
   bold?: boolean;
   options?: Array<string>;
+
+  protected async printMessage() {
+    let output = `${this.prefix}${this.message}${this.suffix}`;
+    if (this.bold) {
+     output = logger.bold(output);
+    }
+    await logger.write(output);
+  }
 }
