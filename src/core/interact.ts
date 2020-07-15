@@ -5,8 +5,8 @@ export enum InteractType {
   any,
   numeric,
   choice,
-  /* TODO: 
   alphabetical,
+  /* TODO: 
   checklist,
   */
 }

@@ -1,4 +1,4 @@
-import { deepExtend, AnyObject } from "./deepExtend.ts";
+import { deepExtend, AnyObject } from "../helpers/deepExtend.ts";
 
 export class StateManager {
   public readonly state: AnyObject = {};
