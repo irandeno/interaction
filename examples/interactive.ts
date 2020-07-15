@@ -1,33 +1,26 @@
 import { Interaction, InteractType } from "../mod.ts";
 
-//TODO: make prefix,suffix,bold,... global configurable:
-const interaction = new Interaction();
+const interaction = new Interaction({ bold: true, prefix: "> ", suffix: "? " });
 
 const results = await interaction.interact([
   {
     name: "name",
-    message: "enter your name",
+    message: "what's your name",
     type: InteractType.any,
-    prefix: "> ",
-    suffix: ": ",
-    bold: true,
+    prefix: "- ",
   },
   {
     name: "age",
-    message: "enter your age",
+    message: "how old are you",
     type: InteractType.numeric,
-    prefix: "> ",
-    suffix: ": ",
-    bold: true,
+    bold: false,
   },
   {
-    name: "pizza",
+    name: "food",
     message: "enter your favorite food",
     type: InteractType.choice,
     options: ["pizza", "hamburger"],
-    prefix: "> ",
-    suffix: ": ",
-    bold: true,
+    suffix: "... ",
   },
 ]);
 
