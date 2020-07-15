@@ -2,6 +2,7 @@ import { Interact, InteractOptions } from "../core/interact.ts";
 import { StateManager } from "../core/stateManager.ts";
 import * as cursor from "../helpers/cursor.ts";
 import * as logger from "../helpers/logger.ts";
+import * as errors from "../helpers/errors.ts";
 import { readKeypress } from "../deps.ts";
 interface ChoiceState {
   options: Array<string>;
@@ -14,7 +15,7 @@ export class Choice extends Interact {
   constructor(opts: InteractOptions) {
     super(opts);
     if (typeof opts.options == "undefined" || !opts.options.length) {
-      throw new Error("options is required!");
+      throw new errors.EssentialAbsence("options");
     }
     this.stateManager = new StateManager({
       options: opts.options,
