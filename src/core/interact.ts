@@ -1,11 +1,12 @@
 import * as logger from "../helpers/logger.ts";
+import * as errors from "../helpers/errors.ts";
 
 export enum InteractType {
   any,
   numeric,
   choice,
-  /* TODO: 
   alphabetical,
+  /* TODO: 
   checklist,
   */
 }
@@ -31,8 +32,7 @@ export class Interact implements InteractOptions {
   [key: string]: unknown
   constructor(opts: InteractOptions) {
     if (typeof opts.name == undefined) {
-      // TODO: properly error handling!
-      throw new Error("name is required");
+      throw new errors.EssentialAbsence("name");
     }
     for (const [key, value] of Object.entries(opts)) {
       this[key] = value;
