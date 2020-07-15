@@ -16,6 +16,13 @@ const results = await interaction.interact([
     bold: false,
   },
   {
+    name: "alpha",
+    message: "enter a key",
+    type: InteractType.alphabetical,
+    suffix: ": ",
+    prefix: "> ",
+  },
+  {
     name: "food",
     message: "enter your favorite food",
     type: InteractType.choice,

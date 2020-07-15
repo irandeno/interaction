@@ -1,6 +1,6 @@
 import { InteractOptions, InteractType } from "./src/core/interact.ts";
 export { InteractType };
-import { Any, Numeric, Choice } from "./src/types/mod.ts";
+import { Any, Numeric, Choice, Alphabetical } from "./src/types/mod.ts";
 import { deepExtend } from "./src/helpers/deepExtend.ts";
 
 type globalOptions = {
@@ -32,6 +32,9 @@ export class Interaction {
           break;
         case InteractType.choice:
           this.answers[opt.name] = await new Choice(mergedOptions).request();
+          break;
+        case InteractType.alphabetical:
+          this.answers[opt.name] = await new Alphabetical(mergedOptions).request();
           break;
       }
     }
