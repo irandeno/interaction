@@ -16,8 +16,8 @@ const results = await interaction.interact([
     bold: false,
   },
   {
-    name: "alpha",
-    message: "enter a key",
+    name: "color",
+    message: "type your favorite color",
     type: InteractType.alphabetical,
     suffix: ": ",
     prefix: "> ",

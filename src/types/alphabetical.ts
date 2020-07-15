@@ -8,7 +8,7 @@ export class Alphabetical extends Interact {
   }
   async request(): Promise<string> {
     await this.printMessage();
-    const result = await this.getUserChar();
+    const result = await this.getInput();
     return Promise.resolve(result);
   }
 
@@ -19,10 +19,14 @@ export class Alphabetical extends Interact {
     return enAlphabet;
   }
 
-  protected async getUserChar(): Promise<string> {
+  protected async getInput(): Promise<string> {
     let input = "";
     for await (const pressedKey of readKeypress()) {
-      if (typeof pressedKey.key == "undefined" || pressedKey.key === "space") continue;
+      if (
+        typeof pressedKey.key == "undefined" || pressedKey.key === "space"
+      ) {
+        continue;
+      }
       if (pressedKey.key === "return") {
         await logger.write("\n");
         break;
@@ -37,7 +41,6 @@ export class Alphabetical extends Interact {
         logger.write(pressedKey.key);
         input += pressedKey.key!;
       }
-
     }
     return input;
   }

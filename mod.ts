@@ -34,7 +34,8 @@ export class Interaction {
           this.answers[opt.name] = await new Choice(mergedOptions).request();
           break;
         case InteractType.alphabetical:
-          this.answers[opt.name] = await new Alphabetical(mergedOptions).request();
+          this.answers[opt.name] = await new Alphabetical(mergedOptions)
+            .request();
           break;
       }
     }
