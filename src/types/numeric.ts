@@ -38,7 +38,7 @@ export class Numeric extends Interact {
           continue;
         }
         input = input.slice(0, -1);
-        moveLeft(1);
+        await moveLeft(1);
         await clearRight();
         continue;
       }

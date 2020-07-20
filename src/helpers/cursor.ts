@@ -9,7 +9,7 @@ const DOWN = "B";
 const RIGHT = "C";
 const UP = "A";
 const CLEAR_DOWN = "0J";
-const CLEAR_RIGHT = "0P";
+const CLEAR_RIGHT = "0K";
 
 async function cursor(action: string): Promise<void> {
   await logger.write(ESCAPE + action);

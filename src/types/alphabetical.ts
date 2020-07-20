@@ -33,13 +33,12 @@ export class Alphabetical extends Interact {
         break;
       }
 
-      // TODO: implement backspace keyboard
       if (pressedKey.key === "backspace") {
         if (input.length === 0) {
           continue;
         }
         input = input.slice(0, -1);
-        moveLeft(1);
+        await moveLeft(1);
         await clearRight();
         continue;
       }
