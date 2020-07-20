@@ -1,6 +1,7 @@
 import { Interact, InteractOptions } from "../core/interact.ts";
 import * as logger from "../helpers/logger.ts";
 import { readKeypress } from "../deps.ts";
+import { moveLeft, clearRight } from "../helpers/cursor.ts";
 
 export class Numeric extends Interact {
   constructor(opts: InteractOptions) {
@@ -31,6 +32,17 @@ export class Numeric extends Interact {
     ];
     for await (const pressedKey of readKeypress()) {
       if (typeof pressedKey.key == "undefined") continue;
+
+      if (pressedKey.key === "backspace") {
+        if (input.length === 0) {
+          continue;
+        }
+        input = input.slice(0, -1);
+        moveLeft(1);
+        await clearRight();
+        continue;
+      }
+
       if (allowedInputs.includes(pressedKey.key)) {
         logger.write(pressedKey.key);
         input += pressedKey.key!;

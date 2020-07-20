@@ -9,6 +9,7 @@ const DOWN = "B";
 const RIGHT = "C";
 const UP = "A";
 const CLEAR_DOWN = "0J";
+const CLEAR_RIGHT = "0P";
 
 async function cursor(action: string): Promise<void> {
   await logger.write(ESCAPE + action);
@@ -19,6 +20,10 @@ export async function clearLine(): Promise<void> {
 
 export async function clearDown(): Promise<void> {
   await cursor(CLEAR_DOWN);
+}
+
+export async function clearRight(): Promise<void> {
+  await cursor(CLEAR_RIGHT);
 }
 
 export async function lineUp(lines = 1): Promise<void> {
