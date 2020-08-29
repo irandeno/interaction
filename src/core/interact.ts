@@ -6,9 +6,7 @@ export enum InteractType {
   numeric,
   choice,
   alphabetical,
-  /* TODO: 
-  checklist,
-  */
+  checkList,
 }
 
 export interface InteractOptions {
@@ -18,6 +16,8 @@ export interface InteractOptions {
   prefix?: string;
   suffix?: string;
   bold?: boolean;
+  checked?: string;
+  unchecked?: string;
   options?: Array<string>;
 }
 
@@ -28,6 +28,8 @@ export class Interact implements InteractOptions {
   prefix?: string;
   suffix?: string;
   bold?: boolean;
+  checked: string = "[x]";
+  unchecked: string = "[ ]";
   options?: Array<string>;
   [key: string]: unknown
   constructor(opts: InteractOptions) {

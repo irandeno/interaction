@@ -5,7 +5,6 @@ import * as logger from "../helpers/logger.ts";
 import * as errors from "../helpers/errors.ts";
 import { readKeypress } from "../deps.ts";
 interface ChoiceState {
-  options: Array<string>;
   selected: number;
 }
 
@@ -28,7 +27,7 @@ export class Choice extends Interact {
     await this.printOptions();
     await cursor.lineUp(this.options?.length);
     const state = this.stateManager.state;
-    await cursor.moveRight(state.options[state.selected].length);
+    await cursor.moveRight(this.options![state.selected].length);
     const selected = await this.keyListener();
     return Promise.resolve(selected);
   }
@@ -53,25 +52,25 @@ export class Choice extends Interact {
       if (pressedKey.key === "w") {
         if (state.selected === 0) continue;
         await cursor.clearLine();
-        await cursor.moveLeft(state.options[state.selected].length);
-        await logger.write(state.options[state.selected]);
+        await cursor.moveLeft(this.options![state.selected].length);
+        await logger.write(this.options![state.selected]);
         await cursor.lineUp();
         this.stateManager.setState({ selected: state.selected - 1 });
-        await logger.write(logger.green(state.options[state.selected]));
+        await logger.write(logger.green(this.options![state.selected]));
       } else if (pressedKey.key === "s") {
-        if (state.selected === state.options.length - 1) continue;
+        if (state.selected === this.options!.length - 1) continue;
         await cursor.clearLine();
-        await cursor.moveLeft(state.options[state.selected].length);
-        await logger.write(state.options[state.selected]);
+        await cursor.moveLeft(this.options![state.selected].length);
+        await logger.write(this.options![state.selected]);
         await cursor.lineDown();
         this.stateManager.setState({ selected: state.selected + 1 });
-        await logger.write(logger.green(state.options[state.selected]));
+        await logger.write(logger.green(this.options![state.selected]));
       } else if (
         pressedKey.key === "space" ||
-        pressedKey.key === "enter" ||
+        pressedKey.key === "return" ||
         (pressedKey.ctrlKey && pressedKey.key === "c")
       ) {
-        await cursor.lineDown(state.options.length - state.selected);
+        await cursor.lineDown(this.options!.length - state.selected);
         break;
       }
     }

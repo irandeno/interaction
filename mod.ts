@@ -1,6 +1,12 @@
 import { InteractOptions, InteractType } from "./src/core/interact.ts";
 export { InteractType };
-import { Any, Numeric, Choice, Alphabetical } from "./src/types/mod.ts";
+import {
+  Any,
+  Numeric,
+  Choice,
+  Alphabetical,
+  CheckList,
+} from "./src/types/mod.ts";
 import { deepExtend } from "./src/helpers/deepExtend.ts";
 
 type globalOptions = {
@@ -10,7 +16,7 @@ type globalOptions = {
 };
 
 export class Interaction {
-  answers: Record<string, string | number> = {};
+  answers: Record<string, string | number | Array<number>> = {};
   globalOptions: globalOptions;
   constructor(globalOptions?: globalOptions) {
     this.globalOptions = globalOptions || {};
@@ -32,6 +38,9 @@ export class Interaction {
           break;
         case InteractType.choice:
           this.answers[opt.name] = await new Choice(mergedOptions).request();
+          break;
+        case InteractType.checkList:
+          this.answers[opt.name] = await new CheckList(mergedOptions).request();
           break;
         case InteractType.alphabetical:
           this.answers[opt.name] = await new Alphabetical(mergedOptions)

@@ -29,6 +29,14 @@ const results = await interaction.interact([
     options: ["pizza", "hamburger"],
     suffix: "... ",
   },
+  {
+    name: "dessert",
+    message: "select your desserts",
+    type: InteractType.checkList,
+    options: ["salad", "potato"],
+    checked: "[x]",
+    unchecked: "[ ]",
+  },
 ]);
 
 console.log(results);
